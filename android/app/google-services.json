@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "151607310397",
+    "firebase_url": "https://jobo-526e3-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "jobo-526e3",
+    "storage_bucket": "jobo-526e3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:151607310397:android:8befb083f9a5fd5dfe5254",
+        "android_client_info": {
+          "package_name": "com.example.main"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "151607310397-n84an8eec1fjaq6ta9otpb34rononcm7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9MaJ1JsDgCUUysBSyOKqNd-KYmbckoWs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "151607310397-n84an8eec1fjaq6ta9otpb34rononcm7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "151607310397-eq7fe75i1a5hesu4v8k4rs5bbpv1d23v.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.main"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:151607310397:android:cbdf58d243dd5cf4fe5254",
+        "android_client_info": {
+          "package_name": "com.mycompany.jobo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "151607310397-n84an8eec1fjaq6ta9otpb34rononcm7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA9MaJ1JsDgCUUysBSyOKqNd-KYmbckoWs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "151607310397-n84an8eec1fjaq6ta9otpb34rononcm7.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "151607310397-eq7fe75i1a5hesu4v8k4rs5bbpv1d23v.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.main"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
