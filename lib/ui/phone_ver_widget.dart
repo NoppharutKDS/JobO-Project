@@ -1,14 +1,14 @@
-import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
+import '../services/firebase_auth/auth_util.dart';
+import '../services/backend.dart';
+import '../util/util/flutter_flow_theme.dart';
+import '../util/flutter_flow_util.dart';
+import 'flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import '../data/phone_ver_model.dart';
-export '../data/phone_ver_model.dart';
+import '../models/phone_ver_model.dart';
+export '../models/phone_ver_model.dart';
 
 class PhoneVerWidget extends StatefulWidget {
   const PhoneVerWidget({super.key});

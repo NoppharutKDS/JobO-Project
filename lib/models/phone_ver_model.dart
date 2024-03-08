@@ -1,9 +1,9 @@
-import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import '../common/phone_ver_widget.dart' show PhoneVerWidget;
+import '../services/firebase_auth/auth_util.dart';
+import '../services/backend.dart';
+import '../util/theme/flutter_flow_theme.dart';
+import '../util/flutter_flow_util.dart';
+import '../ui/flutter_flow_widgets.dart';
+import '../ui/phone_ver_widget.dart' show PhoneVerWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';

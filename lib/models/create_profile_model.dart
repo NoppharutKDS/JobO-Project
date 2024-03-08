@@ -1,11 +1,11 @@
-import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
-import '/backend/firebase_storage/storage.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
+import '../services/firebase_auth/auth_util.dart';
+import '../services/backend.dart';
+import '../services/firebase_storage/storage.dart';
+import '../util/theme/flutter_flow_theme.dart';
+import '../util/flutter_flow_util.dart';
+import '../ui/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
-import '../common/create_profile_widget.dart' show CreateProfileWidget;
+import '../ui/create_profile_widget.dart' show CreateProfileWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

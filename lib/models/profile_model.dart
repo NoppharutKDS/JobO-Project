@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import '../common/profile_widget.dart' show ProfileWidget;
+import '../util/theme/flutter_flow_theme.dart';
+import '../util/flutter_flow_util.dart';
+import '../ui/flutter_flow_widgets.dart';
+import '../ui/profile_widget.dart' show ProfileWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';

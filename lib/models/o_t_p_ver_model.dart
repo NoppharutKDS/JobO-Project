@@ -1,9 +1,9 @@
-import '/auth/firebase_auth/auth_util.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
+import '../services/firebase_auth/auth_util.dart';
+import '../util/theme/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_timer.dart';
-import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import '../common/o_t_p_ver_widget.dart' show OTPVerWidget;
+import '../util/flutter_flow_util.dart';
+import '../ui/flutter_flow_widgets.dart';
+import '../ui/o_t_p_ver_widget.dart' show OTPVerWidget;
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:flutter/material.dart';

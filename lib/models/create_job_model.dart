@@ -1,9 +1,9 @@
-import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
-import '../common/create_job_widget.dart' show CreateJobWidget;
+import '../services/firebase_auth/auth_util.dart';
+import '../services/backend.dart';
+import '../util/theme/flutter_flow_theme.dart';
+import '../util/flutter_flow_util.dart';
+import '../ui/flutter_flow_widgets.dart';
+import '../ui/create_job_widget.dart' show CreateJobWidget;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

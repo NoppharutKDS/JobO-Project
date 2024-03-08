@@ -2,11 +2,11 @@ import 'dart:async';
 
 import 'package:collection/collection.dart';
 
-import '/backend/schema/util/firestore_util.dart';
-import '/backend/schema/util/schema_util.dart';
+import '/services/schema/util/firestore_util.dart';
+import '/services/schema/util/schema_util.dart';
 
 import 'index.dart';
-import '/flutter_flow/flutter_flow_util.dart';
+import '../../util/flutter_flow_util.dart';
 
 class JobsRecord extends FirestoreRecord {
   JobsRecord._(

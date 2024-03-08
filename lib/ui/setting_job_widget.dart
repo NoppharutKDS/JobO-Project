@@ -1,17 +1,17 @@
-import '/auth/firebase_auth/auth_util.dart';
-import '/backend/backend.dart';
+import '../services/firebase_auth/auth_util.dart';
+import '../services/backend.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
+import '../util/util/flutter_flow_theme.dart';
+import '../util/flutter_flow_util.dart';
+import 'flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import '../data/setting_job_model.dart';
-export '../data/setting_job_model.dart';
+import '../models/setting_job_model.dart';
+export '../models/setting_job_model.dart';
 
 class SettingJobWidget extends StatefulWidget {
   const SettingJobWidget({super.key});
