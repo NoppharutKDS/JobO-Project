@@ -10,8 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'setting_job_model.dart';
-export 'setting_job_model.dart';
+import '../data/setting_job_model.dart';
+export '../data/setting_job_model.dart';
 
 class SettingJobWidget extends StatefulWidget {
   const SettingJobWidget({super.key});

@@ -6,8 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'create_account_model.dart';
-export 'create_account_model.dart';
+import '../data/create_account_model.dart';
+export '../data/create_account_model.dart';
 
 class CreateAccountWidget extends StatefulWidget {
   const CreateAccountWidget({super.key});

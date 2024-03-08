@@ -7,8 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'phone_ver_model.dart';
-export 'phone_ver_model.dart';
+import '../data/phone_ver_model.dart';
+export '../data/phone_ver_model.dart';
 
 class PhoneVerWidget extends StatefulWidget {
   const PhoneVerWidget({super.key});

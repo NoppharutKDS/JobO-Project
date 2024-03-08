@@ -10,8 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'create_profile_model.dart';
-export 'create_profile_model.dart';
+import '../data/create_profile_model.dart';
+export '../data/create_profile_model.dart';
 
 class CreateProfileWidget extends StatefulWidget {
   const CreateProfileWidget({super.key});

@@ -9,8 +9,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'o_t_p_ver_model.dart';
-export 'o_t_p_ver_model.dart';
+import '../data/o_t_p_ver_model.dart';
+export '../data/o_t_p_ver_model.dart';
 
 class OTPVerWidget extends StatefulWidget {
   const OTPVerWidget({super.key});
