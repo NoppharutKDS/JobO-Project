@@ -7,8 +7,14 @@ gradle-wrapper.jar
 GeneratedPluginRegistrant.java
 
 .vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 
-.DS_Store
+**/.history
+
+**/.DS_Store
 
 # Remember to never publicly share your keystore.
 # See https://flutter.dev/docs/deployment/android#reference-the-keystore-from-the-app

@@ -1,7 +1,7 @@
 import '../services/firebase_auth/auth_util.dart';
 import '../services/backend.dart';
 import '../services/firebase_storage/storage.dart';
-import '../util/util/flutter_flow_theme.dart';
+import '../util/theme/flutter_flow_theme.dart';
 import '../util/flutter_flow_util.dart';
 import 'flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';

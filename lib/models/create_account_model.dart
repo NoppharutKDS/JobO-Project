@@ -95,3 +95,4 @@ class CreateAccountModel extends FlutterFlowModel<CreateAccountWidget> {
 
   /// Additional helper methods are added here.
 }
+
