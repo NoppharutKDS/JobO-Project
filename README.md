@@ -11,7 +11,21 @@ Many students who are currently studying Computer Engineering or Software Knowle
 | ------------------------------ |
 | [Wiki Home](../../wiki/Home) |
 | [Vision Statement](../../wiki/Vision-Statement)|
-| [Features list]|
 | [Installation Instruction]|
 
+## Features List
+
+• Job Listing - Show a comprehensive list of job opportunities in different industries and  companies.
+
+• Search and Filter - Search and Filters that allow job seekers to refine their job search based  on location, job type, period, salary, and other relevant criteria.
+
+• Feedback and Rating - Allows job seekers to provide feedback on their job search experience and rate the companies to which they have applied as public or anonymous.
+
+• Notification and Follow - A feature allowing users to favorite their company and receive  notifications when new job openings that match their criteria or in that company are posted. 
+• Tracking Progress - Allows job seekers to keep track of the status of their job applications  and the progress of their job search. 
+
+• Location and Distancing – Show the geolocation of the company that has a job available  and estimate the distance of the company or industries from the user’s location, also  
+providing a vehicle route like a bus, BTS, MRT to get there. 
+
+• Profile Customization – Allows job seekers to customize their profile to indicate their  education, experience, and accomplishments.
 ## Requirement before starting JobO
