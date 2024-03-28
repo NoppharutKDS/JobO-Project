@@ -24,8 +24,7 @@ Many students who are currently studying Computer Engineering or Software Knowle
 • Notification and Follow - A feature allowing users to favorite their company and receive  notifications when new job openings that match their criteria or in that company are posted. 
 • Tracking Progress - Allows job seekers to keep track of the status of their job applications  and the progress of their job search. 
 
-• Location and Distancing – Show the geolocation of the company that has a job available  and estimate the distance of the company or industries from the user’s location, also  
-providing a vehicle route like a bus, BTS, MRT to get there. 
+• Location and Distancing – Show the geolocation of the company that has a job available  and estimate the distance of the company or industries from the user’s location, also providing a vehicle route like a bus, BTS, MRT to get there. 
 
 • Profile Customization – Allows job seekers to customize their profile to indicate their  education, experience, and accomplishments.
 ## Requirement before starting JobO
