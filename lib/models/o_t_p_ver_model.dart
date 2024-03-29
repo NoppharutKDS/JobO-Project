@@ -1,6 +1,6 @@
 import '../services/firebase_auth/auth_util.dart';
 import '../util/theme/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_timer.dart';
+import '../flutter_flow/flutter_flow_timer.dart';
 import '../util/flutter_flow_util.dart';
 import '../ui/flutter_flow_widgets.dart';
 import '../ui/o_t_p_ver_widget.dart' show OTPVerWidget;
