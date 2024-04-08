@@ -1,20 +1,14 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
-import '../../services/backend.dart';
 
 import '../../providers/auth_provider.dart';
 
-import '/index.dart';
-import '/main.dart';
+import '../../index.dart';
+import '../../main.dart';
 import '../../util/theme/flutter_flow_theme.dart';
-import '/flutter_flow/lat_lng.dart';
-import '/flutter_flow/place.dart';
 import '../../util/flutter_flow_util.dart';
-import '../../util/serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
 export '../../util/serialization_util.dart';
@@ -79,53 +73,100 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? CreateJobWidget() : LoginPageWidget(),
+          appStateNotifier.loggedIn ? const NavBarPage() : const LoginPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? CreateJobWidget() : LoginPageWidget(),
+              appStateNotifier.loggedIn ? const NavBarPage() : const LoginPageWidget(),
         ),
         FFRoute(
           name: 'LoginPage',
           path: '/loginPage',
-          builder: (context, params) => LoginPageWidget(),
+          builder: (context, params) => const LoginPageWidget(),
         ),
         FFRoute(
           name: 'CreateAccount',
           path: '/createAccount',
-          builder: (context, params) => CreateAccountWidget(),
+          builder: (context, params) => const CreateAccountWidget(),
         ),
         FFRoute(
-          name: 'Profile',
-          path: '/profile',
-          builder: (context, params) => ProfileWidget(),
+          name: 'ProfilePage',
+          path: '/profilePage',
+          builder: (context, params) => const ProfilePageWidget(),
         ),
         FFRoute(
           name: 'CreateProfile',
           path: '/createProfile',
-          builder: (context, params) => CreateProfileWidget(),
+          builder: (context, params) => const CreateProfileWidget(),
         ),
         FFRoute(
-          name: 'SettingJob',
-          path: '/settingJob',
-          builder: (context, params) => SettingJobWidget(),
+          name: 'UpdateJob',
+          path: '/updateJob',
+          builder: (context, params) => UpdateJobWidget(
+            jobRef: params.getParam(
+                'jobRef', ParamType.DocumentReference, false, ['jobs']),
+          ),
         ),
         FFRoute(
           name: 'CreateJob',
           path: '/createJob',
-          builder: (context, params) => CreateJobWidget(),
+          builder: (context, params) => const CreateJobWidget(),
         ),
         FFRoute(
           name: 'PhoneVer',
           path: '/phoneVer',
-          builder: (context, params) => PhoneVerWidget(),
+          builder: (context, params) => const PhoneVerWidget(),
         ),
         FFRoute(
           name: 'OTPVer',
           path: '/oTPVer',
-          builder: (context, params) => OTPVerWidget(),
+          builder: (context, params) => const OTPVerWidget(),
+        ),
+        FFRoute(
+          name: 'JobManagePage',
+          path: '/jobManagePage',
+          builder: (context, params) => const JobManagePageWidget(),
+        ),
+        FFRoute(
+          name: 'JobPage',
+          path: '/jobPage',
+          builder: (context, params) => JobPageWidget(
+            jobinfo: params.getParam(
+                'jobinfo', ParamType.DocumentReference, false, ['jobs']),
+          ),
+        ),
+        FFRoute(
+          name: 'CompanyPage',
+          path: '/companyPage',
+          builder: (context, params) => const CompanyPageWidget(),
+        ),
+        FFRoute(
+          name: 'TipPage',
+          path: '/tipPage',
+          builder: (context, params) => const TipPageWidget(),
+        ),
+        FFRoute(
+          name: 'HomePage',
+          path: '/homePage',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'HomePage')
+              : const HomePageWidget(),
+        ),
+        FFRoute(
+          name: 'SearchPage',
+          path: '/searchPage',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'SearchPage')
+              : const SearchPageWidget(),
+        ),
+        FFRoute(
+          name: 'FavPage',
+          path: '/favPage',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'FavPage')
+              : const FavPageWidget(),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -297,6 +338,7 @@ class FFRoute {
           return null;
         },
         pageBuilder: (context, state) {
+          fixStatusBarOniOS16AndBelow(context);
           final ffParams = FFParameters(state, asyncParams);
           final page = ffParams.hasFutures
               ? FutureBuilder(
@@ -358,7 +400,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {

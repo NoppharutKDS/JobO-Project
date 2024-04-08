@@ -1,17 +1,15 @@
-import '../flutter_flow/flutter_flow_icon_button.dart';
-import '../util/theme/flutter_flow_theme.dart';
 import '../util/flutter_flow_util.dart';
-import '../ui/flutter_flow_widgets.dart';
-import '../ui/profile_page_widget.dart' show ProfileWidget;
+import '../ui/fav_page_widget.dart' show FavPageWidget;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
-class ProfileModel extends FlutterFlowModel<ProfileWidget> {
+class FavPageModel extends FlutterFlowModel<FavPageWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode;
+  TextEditingController? textController;
+  String? Function(BuildContext, String?)? textControllerValidator;
 
   /// Initialization and disposal methods.
 
@@ -21,6 +19,8 @@ class ProfileModel extends FlutterFlowModel<ProfileWidget> {
   @override
   void dispose() {
     unfocusNode.dispose();
+    textFieldFocusNode?.dispose();
+    textController?.dispose();
   }
 
   /// Action blocks are added here.

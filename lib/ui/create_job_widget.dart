@@ -47,15 +47,6 @@ class _CreateJobWidgetState extends State<CreateJobWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -66,48 +57,44 @@ class _CreateJobWidgetState extends State<CreateJobWidget> {
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: const AlignmentDirectional(0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Opacity(
-                        opacity: 0.7,
-                        child: Align(
-                          alignment: AlignmentDirectional(-1.0, 0.0),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                20.0, 0.0, 35.0, 0.0),
-                            child: InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                context.safePop();
-                              },
-                              child: Icon(
-                                Icons.arrow_circle_left_rounded,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                size: 45.0,
-                              ),
+                      Align(
+                        alignment: const AlignmentDirectional(-1.0, 0.0),
+                        child: Padding(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              20.0, 0.0, 35.0, 0.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              context.safePop();
+                            },
+                            child: Icon(
+                              Icons.arrow_circle_left_rounded,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              size: 45.0,
                             ),
                           ),
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: const AlignmentDirectional(0.0, 0.0),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              30.0, 0.0, 0.0, 0.0),
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              35.0, 0.0, 0.0, 0.0),
                           child: Text(
                             'Create a Job',
                             textAlign: TextAlign.start,
@@ -134,36 +121,36 @@ class _CreateJobWidgetState extends State<CreateJobWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Align(
-                            alignment: AlignmentDirectional(-1.0, 0.0),
+                            alignment: const AlignmentDirectional(-1.0, 0.0),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  30.0, 30.0, 0.0, 0.0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  30.0, 20.0, 0.0, 0.0),
                               child: Text(
                                 'Name',
                                 style: FlutterFlowTheme.of(context)
                                     .labelLarge
                                     .override(
                                       fontFamily: 'Karla',
-                                      color: Color(0xFF2B2B2B),
+                                      color: const Color(0xFF2B2B2B),
                                       fontWeight: FontWeight.w500,
                                     ),
                               ),
                             ),
                           ),
-                          Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  20.0, 0.0, 20.0, 0.0),
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                20.0, 3.0, 20.0, 8.0),
+                            child: SizedBox(
+                              width: 320.0,
                               child: TextFormField(
                                 controller: _model.textController1,
                                 focusNode: _model.textFieldFocusNode1,
-                                textCapitalization: TextCapitalization.none,
+                                autofocus: true,
                                 obscureText: false,
                                 decoration: InputDecoration(
                                   labelStyle:
                                       FlutterFlowTheme.of(context).labelMedium,
-                                  hintText: 'Job name....',
+                                  hintText: 'Job name',
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .labelLarge
                                       .override(
@@ -175,7 +162,7 @@ class _CreateJobWidgetState extends State<CreateJobWidget> {
                                           .alternate,
                                       width: 2.0,
                                     ),
-                                    borderRadius: BorderRadius.circular(12.0),
+                                    borderRadius: BorderRadius.circular(10.0),
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -183,73 +170,74 @@ class _CreateJobWidgetState extends State<CreateJobWidget> {
                                           .alternate,
                                       width: 2.0,
                                     ),
-                                    borderRadius: BorderRadius.circular(12.0),
+                                    borderRadius: BorderRadius.circular(10.0),
                                   ),
                                   errorBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: FlutterFlowTheme.of(context).error,
                                       width: 2.0,
                                     ),
-                                    borderRadius: BorderRadius.circular(12.0),
+                                    borderRadius: BorderRadius.circular(10.0),
                                   ),
                                   focusedErrorBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: FlutterFlowTheme.of(context).error,
                                       width: 2.0,
                                     ),
-                                    borderRadius: BorderRadius.circular(12.0),
+                                    borderRadius: BorderRadius.circular(10.0),
                                   ),
                                   filled: true,
-                                  fillColor: Color(0xFFF9FAFB),
-                                  contentPadding: EdgeInsets.all(12.0),
+                                  fillColor: const Color(0xFFF9FAFB),
+                                  contentPadding: const EdgeInsets.all(10.0),
                                 ),
-                                style: FlutterFlowTheme.of(context).bodyLarge,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyLarge
+                                    .override(
+                                      fontFamily: 'Karla',
+                                    ),
+                                textAlign: TextAlign.start,
                                 validator: _model.textController1Validator
                                     .asValidator(context),
                               ),
                             ),
                           ),
                           Align(
-                            alignment: AlignmentDirectional(-1.0, 0.0),
+                            alignment: const AlignmentDirectional(-1.0, 0.0),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  30.0, 15.0, 0.0, 0.0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  30.0, 10.0, 0.0, 0.0),
                               child: Text(
-                                'Description',
+                                'Job Description',
                                 style: FlutterFlowTheme.of(context)
                                     .labelLarge
                                     .override(
                                       fontFamily: 'Karla',
-                                      color: Color(0xFF2B2B2B),
+                                      color: const Color(0xFF2B2B2B),
                                       fontWeight: FontWeight.w500,
                                     ),
                               ),
                             ),
                           ),
-                          Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  20.0, 0.0, 20.0, 0.0),
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                20.0, 3.0, 20.0, 8.0),
+                            child: SizedBox(
+                              width: 320.0,
                               child: TextFormField(
                                 controller: _model.textController2,
                                 focusNode: _model.textFieldFocusNode2,
-                                textCapitalization:
-                                    TextCapitalization.sentences,
+                                autofocus: true,
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  labelStyle: FlutterFlowTheme.of(context)
+                                  labelStyle:
+                                      FlutterFlowTheme.of(context).labelMedium,
+                                  hintText: 'Job description...',
+                                  hintStyle: FlutterFlowTheme.of(context)
                                       .labelMedium
                                       .override(
                                         fontFamily: 'Karla',
                                         fontSize: 16.0,
-                                      ),
-                                  hintText: 'Job description....',
-                                  hintStyle: FlutterFlowTheme.of(context)
-                                      .labelLarge
-                                      .override(
-                                        fontFamily: 'Karla',
-                                        color: Color(0xFF57636C),
+                                        lineHeight: 3.0,
                                       ),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -257,42 +245,40 @@ class _CreateJobWidgetState extends State<CreateJobWidget> {
                                           .alternate,
                                       width: 2.0,
                                     ),
-                                    borderRadius: BorderRadius.circular(8.0),
+                                    borderRadius: BorderRadius.circular(10.0),
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
-                                      color:
-                                          FlutterFlowTheme.of(context).primary,
+                                      color: FlutterFlowTheme.of(context)
+                                          .alternate,
                                       width: 2.0,
                                     ),
-                                    borderRadius: BorderRadius.circular(8.0),
+                                    borderRadius: BorderRadius.circular(10.0),
                                   ),
                                   errorBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: FlutterFlowTheme.of(context).error,
                                       width: 2.0,
                                     ),
-                                    borderRadius: BorderRadius.circular(8.0),
+                                    borderRadius: BorderRadius.circular(10.0),
                                   ),
                                   focusedErrorBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: FlutterFlowTheme.of(context).error,
                                       width: 2.0,
                                     ),
-                                    borderRadius: BorderRadius.circular(8.0),
+                                    borderRadius: BorderRadius.circular(10.0),
                                   ),
                                   filled: true,
-                                  fillColor: Color(0xFFF9FAFB),
+                                  fillColor: const Color(0xFFF9FAFB),
                                   contentPadding:
-                                      EdgeInsetsDirectional.fromSTEB(
-                                          20.0, 24.0, 0.0, 24.0),
+                                      const EdgeInsetsDirectional.fromSTEB(
+                                          10.0, 24.0, 0.0, 24.0),
                                 ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
-                                      fontFamily: 'Readex Pro',
-                                      color: FlutterFlowTheme.of(context)
-                                          .primaryText,
+                                      fontFamily: 'Karla',
                                       fontSize: 16.0,
                                     ),
                                 textAlign: TextAlign.start,
@@ -303,40 +289,47 @@ class _CreateJobWidgetState extends State<CreateJobWidget> {
                             ),
                           ),
                           Align(
-                            alignment: AlignmentDirectional(-1.0, 0.0),
+                            alignment: const AlignmentDirectional(-1.0, 0.0),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  30.0, 15.0, 0.0, 0.0),
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  30.0, 10.0, 0.0, 0.0),
                               child: Text(
                                 'Duration (months)',
                                 style: FlutterFlowTheme.of(context)
                                     .labelLarge
                                     .override(
                                       fontFamily: 'Karla',
-                                      color: Color(0xFF2B2B2B),
+                                      color: const Color(0xFF2B2B2B),
                                       fontWeight: FontWeight.w500,
                                     ),
                               ),
                             ),
                           ),
-                          Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  20.0, 0.0, 20.0, 0.0),
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                20.0, 3.0, 20.0, 25.0),
+                            child: SizedBox(
+                              width: 320.0,
                               child: TextFormField(
                                 controller: _model.textController3,
                                 focusNode: _model.textFieldFocusNode3,
+                                autofocus: true,
                                 textCapitalization: TextCapitalization.none,
+                                textInputAction: TextInputAction.done,
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  labelStyle:
-                                      FlutterFlowTheme.of(context).labelMedium,
-                                  hintText: 'Number of  months',
-                                  hintStyle: FlutterFlowTheme.of(context)
-                                      .labelLarge
+                                  labelStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
                                       .override(
                                         fontFamily: 'Karla',
+                                        fontSize: 16.0,
+                                      ),
+                                  hintText: 'Number of months',
+                                  hintStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        fontFamily: 'Karla',
+                                        fontSize: 16.0,
                                       ),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -344,7 +337,7 @@ class _CreateJobWidgetState extends State<CreateJobWidget> {
                                           .alternate,
                                       width: 2.0,
                                     ),
-                                    borderRadius: BorderRadius.circular(12.0),
+                                    borderRadius: BorderRadius.circular(10.0),
                                   ),
                                   focusedBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -352,27 +345,32 @@ class _CreateJobWidgetState extends State<CreateJobWidget> {
                                           .alternate,
                                       width: 2.0,
                                     ),
-                                    borderRadius: BorderRadius.circular(12.0),
+                                    borderRadius: BorderRadius.circular(10.0),
                                   ),
                                   errorBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: FlutterFlowTheme.of(context).error,
                                       width: 2.0,
                                     ),
-                                    borderRadius: BorderRadius.circular(12.0),
+                                    borderRadius: BorderRadius.circular(10.0),
                                   ),
                                   focusedErrorBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
                                       color: FlutterFlowTheme.of(context).error,
                                       width: 2.0,
                                     ),
-                                    borderRadius: BorderRadius.circular(12.0),
+                                    borderRadius: BorderRadius.circular(10.0),
                                   ),
                                   filled: true,
-                                  fillColor: Color(0xFFF9FAFB),
-                                  contentPadding: EdgeInsets.all(12.0),
+                                  fillColor: const Color(0xFFF9FAFB),
+                                  contentPadding: const EdgeInsets.all(10.0),
                                 ),
-                                style: FlutterFlowTheme.of(context).bodyLarge,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Karla',
+                                      fontSize: 16.0,
+                                    ),
                                 keyboardType: TextInputType.number,
                                 validator: _model.textController3Validator
                                     .asValidator(context),
@@ -392,35 +390,23 @@ class _CreateJobWidgetState extends State<CreateJobWidget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             35.0, 30.0, 0.0, 15.0),
                         child: FFButtonWidget(
-                          onPressed: () async {
-                            if (_model.formKey.currentState == null ||
-                                !_model.formKey.currentState!.validate()) {
-                              return;
-                            }
-
-                            await JobsRecord.collection
-                                .doc()
-                                .set(createJobsRecordData(
-                                  name: _model.textController1.text,
-                                  duration:
-                                      int.parse(_model.textController3.text),
-                                  description: _model.textController2.text,
-                                ));
+                          onPressed: () {
+                            print('Button pressed ...');
                           },
                           text: 'Create a job',
                           options: FFButtonOptions(
                             width: 320.0,
                             height: 60.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 24.0, 0.0, 24.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            color: Color(0xFF03764D),
+                            color: const Color(0xFF03764D),
                             textStyle: FlutterFlowTheme.of(context)
                                 .titleLarge
                                 .override(
@@ -428,7 +414,7 @@ class _CreateJobWidgetState extends State<CreateJobWidget> {
                                   color: FlutterFlowTheme.of(context).info,
                                 ),
                             elevation: 3.0,
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),
