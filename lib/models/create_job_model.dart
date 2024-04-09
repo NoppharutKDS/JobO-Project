@@ -1,14 +1,7 @@
-import '../services/firebase_auth/auth_util.dart';
-import '../services/backend.dart';
-import '../util/theme/flutter_flow_theme.dart';
 import '../util/flutter_flow_util.dart';
-import '../ui/flutter_flow_widgets.dart';
 import '../ui/create_job_widget.dart' show CreateJobWidget;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
+import 'flutter_flow_model.dart';
 
 class CreateJobModel extends FlutterFlowModel<CreateJobWidget> {
   ///  State fields for stateful widgets in this page.
@@ -51,8 +44,6 @@ class CreateJobModel extends FlutterFlowModel<CreateJobWidget> {
     return null;
   }
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     textController1Validator = _textController1Validator;
@@ -72,8 +63,4 @@ class CreateJobModel extends FlutterFlowModel<CreateJobWidget> {
     textFieldFocusNode3?.dispose();
     textController3?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

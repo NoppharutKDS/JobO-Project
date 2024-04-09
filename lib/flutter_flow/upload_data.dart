@@ -11,6 +11,7 @@ import 'package:video_player/video_player.dart';
 import '../services/firebase_auth/auth_util.dart';
 import '../util/theme/flutter_flow_theme.dart';
 import '../util/flutter_flow_util.dart';
+import 'uploaded_file.dart';
 
 const allowedFormats = {'image/png', 'image/jpeg', 'video/mp4', 'image/gif'};
 

@@ -2,17 +2,16 @@ import 'dart:async';
 
 import 'package:collection/collection.dart';
 
-import '/services/schema/util/firestore_util.dart';
-import '/services/schema/util/schema_util.dart';
+import 'util/firestore_util.dart';
+import 'util/schema_util.dart';
 
 import 'index.dart';
-import '../../util/flutter_flow_util.dart';
 
 class UsersRecord extends FirestoreRecord {
   UsersRecord._(
-    DocumentReference reference,
-    Map<String, dynamic> data,
-  ) : super(reference, data) {
+    super.reference,
+    super.data,
+  ) {
     _initializeFields();
   }
 

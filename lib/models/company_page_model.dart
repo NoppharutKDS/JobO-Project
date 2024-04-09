@@ -1,13 +1,12 @@
 import '../util/flutter_flow_util.dart';
 import '../ui/company_page_widget.dart' show CompanyPageWidget;
 import 'package:flutter/material.dart';
+import 'flutter_flow_model.dart';
 
 class CompanyPageModel extends FlutterFlowModel<CompanyPageWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-
-  /// Initialization and disposal methods.
 
   @override
   void initState(BuildContext context) {}
@@ -16,8 +15,4 @@ class CompanyPageModel extends FlutterFlowModel<CompanyPageWidget> {
   void dispose() {
     unfocusNode.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

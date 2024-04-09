@@ -1,6 +1,7 @@
 import '../util/flutter_flow_util.dart';
 import '../ui/create_account_widget.dart' show CreateAccountWidget;
 import 'package:flutter/material.dart';
+import 'flutter_flow_model.dart';
 
 class CreateAccountModel extends FlutterFlowModel<CreateAccountWidget> {
   ///  State fields for stateful widgets in this page.
@@ -22,21 +23,10 @@ class CreateAccountModel extends FlutterFlowModel<CreateAccountWidget> {
     return null;
   }
 
-  // State field(s) for UsernameField widget.
-  FocusNode? usernameFieldFocusNode;
-  TextEditingController? usernameFieldController;
-  String? Function(BuildContext, String?)? usernameFieldControllerValidator;
-  String? _usernameFieldControllerValidator(BuildContext context, String? val) {
-    if (val == null || val.isEmpty) {
-      return 'Username is required';
-    }
-
-    if (!RegExp(kTextValidatorUsernameRegex).hasMatch(val)) {
-      return 'Must start with a letter and can only contain letters, digits and - or _.';
-    }
-    return null;
-  }
-
+  // State field(s) for Username widget.
+  FocusNode? usernameFocusNode;
+  TextEditingController? usernameController;
+  String? Function(BuildContext, String?)? usernameControllerValidator;
   // State field(s) for PasswordField widget.
   FocusNode? passwordFieldFocusNode;
   TextEditingController? passwordFieldController;
@@ -58,12 +48,9 @@ class CreateAccountModel extends FlutterFlowModel<CreateAccountWidget> {
   // State field(s) for Checkbox widget.
   bool? checkboxValue;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     emailFieldControllerValidator = _emailFieldControllerValidator;
-    usernameFieldControllerValidator = _usernameFieldControllerValidator;
     passwordFieldVisibility = false;
     passwordFieldControllerValidator = _passwordFieldControllerValidator;
     confirmFieldVisibility = false;
@@ -75,8 +62,8 @@ class CreateAccountModel extends FlutterFlowModel<CreateAccountWidget> {
     emailFieldFocusNode?.dispose();
     emailFieldController?.dispose();
 
-    usernameFieldFocusNode?.dispose();
-    usernameFieldController?.dispose();
+    usernameFocusNode?.dispose();
+    usernameController?.dispose();
 
     passwordFieldFocusNode?.dispose();
     passwordFieldController?.dispose();
@@ -84,8 +71,4 @@ class CreateAccountModel extends FlutterFlowModel<CreateAccountWidget> {
     confirmFieldFocusNode?.dispose();
     confirmFieldController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

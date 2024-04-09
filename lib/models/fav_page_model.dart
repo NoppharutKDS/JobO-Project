@@ -1,6 +1,7 @@
 import '../util/flutter_flow_util.dart';
 import '../ui/fav_page_widget.dart' show FavPageWidget;
 import 'package:flutter/material.dart';
+import 'flutter_flow_model.dart';
 
 class FavPageModel extends FlutterFlowModel<FavPageWidget> {
   ///  State fields for stateful widgets in this page.
@@ -11,8 +12,6 @@ class FavPageModel extends FlutterFlowModel<FavPageWidget> {
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -22,8 +21,4 @@ class FavPageModel extends FlutterFlowModel<FavPageWidget> {
     textFieldFocusNode?.dispose();
     textController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

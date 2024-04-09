@@ -1,6 +1,8 @@
+import 'package:job_o/flutter_flow/nav/nav.dart';
+
 import '../services/backend.dart';
 import '../util/theme/flutter_flow_theme.dart';
-import '../util/flutter_flow_util.dart';
+import '../models/flutter_flow_model.dart';
 import 'flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

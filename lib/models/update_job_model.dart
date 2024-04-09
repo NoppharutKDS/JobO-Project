@@ -1,6 +1,7 @@
 import '../util/flutter_flow_util.dart';
 import '../ui/update_job_widget.dart' show UpdateJobWidget;
 import 'package:flutter/material.dart';
+import 'flutter_flow_model.dart';
 
 class UpdateJobModel extends FlutterFlowModel<UpdateJobWidget> {
   ///  State fields for stateful widgets in this page.
@@ -19,8 +20,6 @@ class UpdateJobModel extends FlutterFlowModel<UpdateJobWidget> {
   TextEditingController? durationController;
   String? Function(BuildContext, String?)? durationControllerValidator;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
@@ -36,8 +35,4 @@ class UpdateJobModel extends FlutterFlowModel<UpdateJobWidget> {
     durationFocusNode?.dispose();
     durationController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

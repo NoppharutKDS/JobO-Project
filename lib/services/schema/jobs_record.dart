@@ -2,51 +2,63 @@ import 'dart:async';
 
 import 'package:collection/collection.dart';
 
-import '/services/schema/util/firestore_util.dart';
-import '/services/schema/util/schema_util.dart';
+import 'util/firestore_util.dart';
+import 'util/schema_util.dart';
 
 import 'index.dart';
 import '../../util/flutter_flow_util.dart';
 
 class JobsRecord extends FirestoreRecord {
   JobsRecord._(
-    DocumentReference reference,
-    Map<String, dynamic> data,
-  ) : super(reference, data) {
+    super.reference,
+    super.data,
+  ) {
     _initializeFields();
   }
 
-  // "name" field.
-  String? _name;
-  String get name => _name ?? '';
-  bool hasName() => _name != null;
+  // "j_id" field.
+  String? _jId;
+  String get jId => _jId ?? '';
+  bool hasJId() => _jId != null;
 
-  // "duration" field.
-  int? _duration;
-  int get duration => _duration ?? 0;
-  bool hasDuration() => _duration != null;
+  // "j_name" field.
+  String? _jName;
+  String get jName => _jName ?? '';
+  bool hasJName() => _jName != null;
 
-  // "description" field.
-  String? _description;
-  String get description => _description ?? '';
-  bool hasDescription() => _description != null;
+  // "j_category" field.
+  String? _jCategory;
+  String get jCategory => _jCategory ?? '';
+  bool hasJCategory() => _jCategory != null;
 
-  // "jid" field.
-  String? _jid;
-  String get jid => _jid ?? '';
-  bool hasJid() => _jid != null;
+  // "j_description" field.
+  String? _jDescription;
+  String get jDescription => _jDescription ?? '';
+  bool hasJDescription() => _jDescription != null;
 
-  // "created_time" field.
-  DateTime? _createdTime;
-  DateTime? get createdTime => _createdTime;
-  bool hasCreatedTime() => _createdTime != null;
+  // "companyRef" field.
+  DocumentReference? _companyRef;
+  DocumentReference? get companyRef => _companyRef;
+  bool hasCompanyRef() => _companyRef != null;
+
+  // "userRef" field.
+  DocumentReference? _userRef;
+  DocumentReference? get userRef => _userRef;
+  bool hasUserRef() => _userRef != null;
+
+  // "j_duration" field.
+  int? _jDuration;
+  int get jDuration => _jDuration ?? 0;
+  bool hasJDuration() => _jDuration != null;
 
   void _initializeFields() {
-    _name = snapshotData['name'] as String?;
-    _duration = castToType<int>(snapshotData['duration']);
-    _description = snapshotData['description'] as String?;
-    _jid = snapshotData['jid'] as String?;
-    _createdTime = snapshotData['created_time'] as DateTime?;
+    _jId = snapshotData['j_id'] as String?;
+    _jName = snapshotData['j_name'] as String?;
+    _jCategory = snapshotData['j_category'] as String?;
+    _jDescription = snapshotData['j_description'] as String?;
+    _companyRef = snapshotData['companyRef'] as DocumentReference?;
+    _userRef = snapshotData['userRef'] as DocumentReference?;
+    _jDuration = castToType<int>(snapshotData['j_duration']);
   }
 
   static CollectionReference get collection =>
@@ -83,19 +95,23 @@ class JobsRecord extends FirestoreRecord {
 }
 
 Map<String, dynamic> createJobsRecordData({
-  String? name,
-  int? duration,
-  String? description,
-  String? jid,
-  DateTime? createdTime,
+  String? jId,
+  String? jName,
+  String? jCategory,
+  String? jDescription,
+  DocumentReference? companyRef,
+  DocumentReference? userRef,
+  int? jDuration,
 }) {
   final firestoreData = mapToFirestore(
     <String, dynamic>{
-      'name': name,
-      'duration': duration,
-      'description': description,
-      'jid': jid,
-      'created_time': createdTime,
+      'j_id': jId,
+      'j_name': jName,
+      'j_category': jCategory,
+      'j_description': jDescription,
+      'companyRef': companyRef,
+      'userRef': userRef,
+      'j_duration': jDuration,
     }.withoutNulls,
   );
 
@@ -107,16 +123,25 @@ class JobsRecordDocumentEquality implements Equality<JobsRecord> {
 
   @override
   bool equals(JobsRecord? e1, JobsRecord? e2) {
-    return e1?.name == e2?.name &&
-        e1?.duration == e2?.duration &&
-        e1?.description == e2?.description &&
-        e1?.jid == e2?.jid &&
-        e1?.createdTime == e2?.createdTime;
+    return e1?.jId == e2?.jId &&
+        e1?.jName == e2?.jName &&
+        e1?.jCategory == e2?.jCategory &&
+        e1?.jDescription == e2?.jDescription &&
+        e1?.companyRef == e2?.companyRef &&
+        e1?.userRef == e2?.userRef &&
+        e1?.jDuration == e2?.jDuration;
   }
 
   @override
-  int hash(JobsRecord? e) => const ListEquality()
-      .hash([e?.name, e?.duration, e?.description, e?.jid, e?.createdTime]);
+  int hash(JobsRecord? e) => const ListEquality().hash([
+        e?.jId,
+        e?.jName,
+        e?.jCategory,
+        e?.jDescription,
+        e?.companyRef,
+        e?.userRef,
+        e?.jDuration
+      ]);
 
   @override
   bool isValidKey(Object? o) => o is JobsRecord;

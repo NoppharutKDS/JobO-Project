@@ -1,14 +1,23 @@
+import 'package:job_o/flutter_flow/nav/nav.dart';
+
+import '../services/firebase_auth/auth_util.dart';
 import '../services/backend.dart';
 import '../flutter_flow/flutter_flow_icon_button.dart';
 import '../util/theme/flutter_flow_theme.dart';
 import '../util/flutter_flow_util.dart';
 import 'flutter_flow_widgets.dart';
+import '../models/flutter_flow_model.dart';
 import 'package:flutter/material.dart';
 import '../models/job_manage_page_model.dart';
 export '../models/job_manage_page_model.dart';
 
 class JobManagePageWidget extends StatefulWidget {
-  const JobManagePageWidget({super.key});
+  const JobManagePageWidget({
+    super.key,
+    required this.companyInfo,
+  });
+
+  final DocumentReference? companyInfo;
 
   @override
   State<JobManagePageWidget> createState() => _JobManagePageWidgetState();
@@ -55,7 +64,7 @@ class _JobManagePageWidgetState extends State<JobManagePageWidget> {
               size: 30.0,
             ),
             onPressed: () async {
-              context.pushNamed('LoginPage');
+              context.safePop();
             },
           ),
           title: Text(
@@ -64,6 +73,7 @@ class _JobManagePageWidgetState extends State<JobManagePageWidget> {
                   fontFamily: 'Outfit',
                   color: Colors.white,
                   fontSize: 22.0,
+                  letterSpacing: 0.0,
                 ),
           ),
           actions: const [],
@@ -85,7 +95,15 @@ class _JobManagePageWidgetState extends State<JobManagePageWidget> {
                           const EdgeInsetsDirectional.fromSTEB(45.0, 20.0, 0.0, 15.0),
                       child: FFButtonWidget(
                         onPressed: () async {
-                          context.pushNamed('CreateJob');
+                          context.pushNamed(
+                            'CreateJob',
+                            queryParameters: {
+                              'companyInfo': serializeParam(
+                                widget.companyInfo,
+                                ParamType.DocumentReference,
+                              ),
+                            }.withoutNulls,
+                          );
                         },
                         text: 'Add new job',
                         options: FFButtonOptions(
@@ -100,6 +118,7 @@ class _JobManagePageWidgetState extends State<JobManagePageWidget> {
                               FlutterFlowTheme.of(context).titleLarge.override(
                                     fontFamily: 'Karla',
                                     color: FlutterFlowTheme.of(context).info,
+                                    letterSpacing: 0.0,
                                   ),
                           elevation: 3.0,
                           borderSide: const BorderSide(
@@ -129,7 +148,12 @@ class _JobManagePageWidgetState extends State<JobManagePageWidget> {
                     ),
                   ),
                   child: StreamBuilder<List<JobsRecord>>(
-                    stream: queryJobsRecord(),
+                    stream: queryJobsRecord(
+                      queryBuilder: (jobsRecord) => jobsRecord.where(
+                        'userRef',
+                        isEqualTo: currentUserReference,
+                      ),
+                    ),
                     builder: (context, snapshot) {
                       // Customize what your widget looks like when it's loading.
                       if (!snapshot.hasData) {
@@ -158,62 +182,76 @@ class _JobManagePageWidgetState extends State<JobManagePageWidget> {
                             children: [
                               Padding(
                                 padding: const EdgeInsetsDirectional.fromSTEB(
-                                    15.0, 15.0, 0.0, 0.0),
+                                    0.0, 0.0, 16.0, 0.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Padding(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 10.0, 0.0),
+                                      child: InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          context.pushNamed(
+                                            'UpdateJob',
+                                            queryParameters: {
+                                              'jobRef': serializeParam(
+                                                listViewJobsRecord.reference,
+                                                ParamType.DocumentReference,
+                                              ),
+                                            }.withoutNulls,
+                                          );
+                                        },
+                                        child: Icon(
+                                          Icons.edit_square,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                        ),
+                                      ),
+                                    ),
+                                    InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        await listViewJobsRecord.reference
+                                            .delete();
+                                      },
+                                      child: Icon(
+                                        Icons.delete_sweep,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        size: 26.0,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    15.0, 0.0, 0.0, 0.0),
                                 child: Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
-                                      'Job name: ${listViewJobsRecord.jName}',
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          0.0, 0.0, 16.0, 0.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 10.0, 0.0),
-                                            child: InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                context.pushNamed(
-                                                  'UpdateJob',
-                                                  queryParameters: {
-                                                    'jobRef': serializeParam(
-                                                      listViewJobsRecord
-                                                          .reference,
-                                                      ParamType
-                                                          .DocumentReference,
-                                                    ),
-                                                  }.withoutNulls,
-                                                );
-                                              },
-                                              child: Icon(
-                                                Icons.edit_square,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryText,
-                                              ),
-                                            ),
-                                          ),
-                                          Icon(
-                                            Icons.delete_sweep,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                            size: 26.0,
-                                          ),
-                                        ],
+                                      'Job name: ${listViewJobsRecord.jName}'
+                                          .maybeHandleOverflow(
+                                        maxChars: 30,
+                                        replacement: '…',
                                       ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
                                     ),
                                   ],
                                 ),
@@ -227,9 +265,17 @@ class _JobManagePageWidgetState extends State<JobManagePageWidget> {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Text(
-                                      'Description: ${listViewJobsRecord.jDescription}',
+                                      'Description: ${listViewJobsRecord.jDescription}'
+                                          .maybeHandleOverflow(
+                                        maxChars: 30,
+                                        replacement: '…',
+                                      ),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
                                     ),
                                   ],
                                 ),
@@ -241,9 +287,17 @@ class _JobManagePageWidgetState extends State<JobManagePageWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Text(
-                                      'Duration: ${listViewJobsRecord.jDuration.toString()}',
+                                      'Duration: ${listViewJobsRecord.jDuration.toString()}'
+                                          .maybeHandleOverflow(
+                                        maxChars: 30,
+                                        replacement: '…',
+                                      ),
                                       style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Readex Pro',
+                                            letterSpacing: 0.0,
+                                          ),
                                     ),
                                   ],
                                 ),

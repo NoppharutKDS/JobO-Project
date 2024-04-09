@@ -1,21 +1,17 @@
-import '../services/firebase_auth/auth_util.dart';
-import '../util/theme/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_timer.dart';
+import '../flutter_flow/flutter_flow_timer.dart';
 import '../util/flutter_flow_util.dart';
-import '../ui/flutter_flow_widgets.dart';
+import '../util/instant_timer.dart';
 import '../ui/o_t_p_ver_widget.dart' show OTPVerWidget;
-import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
+import 'flutter_flow_model.dart';
 
 class OTPVerModel extends FlutterFlowModel<OTPVerWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
+  InstantTimer? instantTimer;
   // State field(s) for Timer widget.
   int timerMilliseconds = 300000;
   String timerValue = StopWatchTimer.getDisplayTime(
@@ -30,8 +26,6 @@ class OTPVerModel extends FlutterFlowModel<OTPVerWidget> {
   TextEditingController? pinCodeController;
   String? Function(BuildContext, String?)? pinCodeControllerValidator;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {
     pinCodeController = TextEditingController();
@@ -40,11 +34,8 @@ class OTPVerModel extends FlutterFlowModel<OTPVerWidget> {
   @override
   void dispose() {
     unfocusNode.dispose();
+    instantTimer?.cancel();
     timerController.dispose();
     pinCodeController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

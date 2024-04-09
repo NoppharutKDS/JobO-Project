@@ -9,6 +9,7 @@ const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 class SendEmailCall {
   static Future<ApiCallResponse> call({
     String? toEmail = '',
+    String? jobName = '',
   }) async {
     final ffApiRequestBody = '''
 {
@@ -19,7 +20,7 @@ class SendEmailCall {
           "email": "$toEmail"
         }
       ],
-      "subject": "Apply job on: TEST Job"
+      "subject": "Someone interest in your job: $jobName"
     }
   ],
   "content": [

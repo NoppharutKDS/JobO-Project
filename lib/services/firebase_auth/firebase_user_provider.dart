@@ -8,6 +8,7 @@ export '../../providers/auth_provider.dart';
 class JobOFirebaseUser extends BaseAuthUser {
   JobOFirebaseUser(this.user);
   User? user;
+  @override
   bool get loggedIn => user != null;
 
   @override

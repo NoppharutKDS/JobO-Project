@@ -1,16 +1,8 @@
-import '../services/firebase_auth/auth_util.dart';
-import '../services/backend.dart';
-import '../services/firebase_storage/storage.dart';
-import '../util/theme/flutter_flow_theme.dart';
+import '../flutter_flow/uploaded_file.dart';
 import '../util/flutter_flow_util.dart';
-import '../ui/flutter_flow_widgets.dart';
-import '/flutter_flow/upload_data.dart';
 import '../ui/create_profile_widget.dart' show CreateProfileWidget;
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
+import 'flutter_flow_model.dart';
 
 class CreateProfileModel extends FlutterFlowModel<CreateProfileWidget> {
   ///  State fields for stateful widgets in this page.
@@ -22,11 +14,13 @@ class CreateProfileModel extends FlutterFlowModel<CreateProfileWidget> {
   String uploadedFileUrl = '';
 
   // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode;
-  TextEditingController? textController;
-  String? Function(BuildContext, String?)? textControllerValidator;
-
-  /// Initialization and disposal methods.
+  FocusNode? textFieldFocusNode1;
+  TextEditingController? textController1;
+  String? Function(BuildContext, String?)? textController1Validator;
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode2;
+  TextEditingController? textController2;
+  String? Function(BuildContext, String?)? textController2Validator;
 
   @override
   void initState(BuildContext context) {}
@@ -34,11 +28,10 @@ class CreateProfileModel extends FlutterFlowModel<CreateProfileWidget> {
   @override
   void dispose() {
     unfocusNode.dispose();
-    textFieldFocusNode?.dispose();
-    textController?.dispose();
+    textFieldFocusNode1?.dispose();
+    textController1?.dispose();
+
+    textFieldFocusNode2?.dispose();
+    textController2?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

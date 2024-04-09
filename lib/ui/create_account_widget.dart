@@ -1,4 +1,8 @@
+import 'package:job_o/flutter_flow/nav/nav.dart';
+
+import '../models/flutter_flow_model.dart';
 import '../services/firebase_auth/auth_util.dart';
+import '../services/backend.dart';
 import '../util/theme/flutter_flow_theme.dart';
 import '../util/flutter_flow_util.dart';
 import 'flutter_flow_widgets.dart';
@@ -26,8 +30,8 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
     _model.emailFieldController ??= TextEditingController();
     _model.emailFieldFocusNode ??= FocusNode();
 
-    _model.usernameFieldController ??= TextEditingController();
-    _model.usernameFieldFocusNode ??= FocusNode();
+    _model.usernameController ??= TextEditingController();
+    _model.usernameFocusNode ??= FocusNode();
 
     _model.passwordFieldController ??= TextEditingController();
     _model.passwordFieldFocusNode ??= FocusNode();
@@ -99,6 +103,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                 fontFamily: 'Karla',
                                 color: FlutterFlowTheme.of(context).primaryText,
                                 fontSize: 24.0,
+                                letterSpacing: 0.0,
                                 fontWeight: FontWeight.bold,
                               ),
                         ),
@@ -124,6 +129,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                 .override(
                                   fontFamily: 'Karla',
                                   color: const Color(0xFF2B2B2B),
+                                  letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
                                 ),
                           ),
@@ -142,13 +148,19 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                               autofocus: true,
                               obscureText: false,
                               decoration: InputDecoration(
-                                labelStyle:
-                                    FlutterFlowTheme.of(context).labelMedium,
+                                isDense: false,
+                                labelStyle: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      letterSpacing: 0.0,
+                                    ),
                                 hintText: 'Email Address',
                                 hintStyle: FlutterFlowTheme.of(context)
                                     .labelLarge
                                     .override(
                                       fontFamily: 'Karla',
+                                      letterSpacing: 0.0,
                                     ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -188,8 +200,10 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                   .bodyLarge
                                   .override(
                                     fontFamily: 'Karla',
+                                    letterSpacing: 0.0,
                                   ),
                               textAlign: TextAlign.start,
+                              minLines: null,
                               validator: _model.emailFieldControllerValidator
                                   .asValidator(context),
                             ),
@@ -208,6 +222,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                 .override(
                                   fontFamily: 'Karla',
                                   color: const Color(0xFF2B2B2B),
+                                  letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
                                 ),
                           ),
@@ -221,18 +236,24 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                           child: SizedBox(
                             width: 320.0,
                             child: TextFormField(
-                              controller: _model.usernameFieldController,
-                              focusNode: _model.usernameFieldFocusNode,
+                              controller: _model.usernameController,
+                              focusNode: _model.usernameFocusNode,
                               autofocus: true,
                               obscureText: false,
                               decoration: InputDecoration(
-                                labelStyle:
-                                    FlutterFlowTheme.of(context).labelMedium,
+                                isDense: false,
+                                labelStyle: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      letterSpacing: 0.0,
+                                    ),
                                 hintText: 'Username',
                                 hintStyle: FlutterFlowTheme.of(context)
                                     .labelLarge
                                     .override(
                                       fontFamily: 'Karla',
+                                      letterSpacing: 0.0,
                                     ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -272,9 +293,11 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                   .bodyLarge
                                   .override(
                                     fontFamily: 'Karla',
+                                    letterSpacing: 0.0,
                                   ),
                               textAlign: TextAlign.start,
-                              validator: _model.usernameFieldControllerValidator
+                              minLines: null,
+                              validator: _model.usernameControllerValidator
                                   .asValidator(context),
                             ),
                           ),
@@ -292,6 +315,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                 .override(
                                   fontFamily: 'Karla',
                                   color: const Color(0xFF2B2B2B),
+                                  letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
                                 ),
                           ),
@@ -310,13 +334,18 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                               autofocus: true,
                               obscureText: !_model.passwordFieldVisibility,
                               decoration: InputDecoration(
-                                labelStyle:
-                                    FlutterFlowTheme.of(context).labelMedium,
+                                labelStyle: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      letterSpacing: 0.0,
+                                    ),
                                 hintText: 'Password',
                                 hintStyle: FlutterFlowTheme.of(context)
                                     .labelLarge
                                     .override(
                                       fontFamily: 'Karla',
+                                      letterSpacing: 0.0,
                                     ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -366,7 +395,13 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                   ),
                                 ),
                               ),
-                              style: FlutterFlowTheme.of(context).bodyLarge,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyLarge
+                                  .override(
+                                    fontFamily: 'Karla',
+                                    letterSpacing: 0.0,
+                                  ),
+                              minLines: null,
                               validator: _model.passwordFieldControllerValidator
                                   .asValidator(context),
                             ),
@@ -385,6 +420,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                 .override(
                                   fontFamily: 'Karla',
                                   color: const Color(0xFF2B2B2B),
+                                  letterSpacing: 0.0,
                                   fontWeight: FontWeight.w500,
                                 ),
                           ),
@@ -403,13 +439,18 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                               autofocus: true,
                               obscureText: !_model.confirmFieldVisibility,
                               decoration: InputDecoration(
-                                labelStyle:
-                                    FlutterFlowTheme.of(context).labelMedium,
+                                labelStyle: FlutterFlowTheme.of(context)
+                                    .labelMedium
+                                    .override(
+                                      fontFamily: 'Readex Pro',
+                                      letterSpacing: 0.0,
+                                    ),
                                 hintText: 'Confirm Password',
                                 hintStyle: FlutterFlowTheme.of(context)
                                     .labelLarge
                                     .override(
                                       fontFamily: 'Karla',
+                                      letterSpacing: 0.0,
                                     ),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -459,7 +500,13 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                   ),
                                 ),
                               ),
-                              style: FlutterFlowTheme.of(context).bodyLarge,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyLarge
+                                  .override(
+                                    fontFamily: 'Karla',
+                                    letterSpacing: 0.0,
+                                  ),
+                              minLines: null,
                               validator: _model.confirmFieldControllerValidator
                                   .asValidator(context),
                             ),
@@ -496,6 +543,10 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                             onChanged: (newValue) async {
                               setState(() => _model.checkboxValue = newValue!);
                             },
+                            side: BorderSide(
+                              width: 2,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                            ),
                             activeColor: const Color(0xFF03764D),
                             checkColor: FlutterFlowTheme.of(context).info,
                           ),
@@ -513,6 +564,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                   .override(
                                     fontFamily: 'Karla',
                                     fontSize: 14.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),
@@ -528,6 +580,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                                     fontFamily: 'Karla',
                                     color: FlutterFlowTheme.of(context).primary,
                                     fontSize: 14.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.w500,
                                   ),
                             ),
@@ -549,7 +602,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                           return;
                         }
                         setState(() {
-                          _model.checkboxValue = true;
+                          _model.checkboxValue = _model.checkboxValue!;
                         });
                         GoRouter.of(context).prepareAuthEvent();
                         if (_model.passwordFieldController.text !=
@@ -573,7 +626,13 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                           return;
                         }
 
-                        context.pushNamedAuth('PhoneVer', context.mounted);
+                        await UsersRecord.collection
+                            .doc(user.uid)
+                            .update(createUsersRecordData(
+                              displayName: _model.usernameController.text,
+                            ));
+
+                        context.pushNamedAuth('CreateProfile', context.mounted);
                       },
                       text: 'Continue',
                       options: FFButtonOptions(
@@ -588,6 +647,7 @@ class _CreateAccountWidgetState extends State<CreateAccountWidget> {
                             FlutterFlowTheme.of(context).titleLarge.override(
                                   fontFamily: 'Karla',
                                   color: FlutterFlowTheme.of(context).info,
+                                  letterSpacing: 0.0,
                                 ),
                         elevation: 3.0,
                         borderSide: const BorderSide(

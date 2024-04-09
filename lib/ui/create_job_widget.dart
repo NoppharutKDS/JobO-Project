@@ -1,18 +1,23 @@
+import 'package:job_o/flutter_flow/nav/nav.dart';
+import '../models/flutter_flow_model.dart';
 import '../services/firebase_auth/auth_util.dart';
 import '../services/backend.dart';
 import '../util/theme/flutter_flow_theme.dart';
 import '../util/flutter_flow_util.dart';
-import 'flutter_flow_widgets.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import '../ui/flutter_flow_widgets.dart';
+import '../util/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import '../models/create_job_model.dart';
 export '../models/create_job_model.dart';
 
 class CreateJobWidget extends StatefulWidget {
-  const CreateJobWidget({super.key});
+  const CreateJobWidget({
+    super.key,
+    required this.companyInfo,
+  });
+
+  final DocumentReference? companyInfo;
 
   @override
   State<CreateJobWidget> createState() => _CreateJobWidgetState();
@@ -94,7 +99,7 @@ class _CreateJobWidgetState extends State<CreateJobWidget> {
                         alignment: const AlignmentDirectional(0.0, 0.0),
                         child: Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
-                              35.0, 0.0, 0.0, 0.0),
+                              30.0, 0.0, 0.0, 0.0),
                           child: Text(
                             'Create a Job',
                             textAlign: TextAlign.start,
@@ -103,6 +108,7 @@ class _CreateJobWidgetState extends State<CreateJobWidget> {
                                 .override(
                                   fontFamily: 'Karla',
                                   fontSize: 24.0,
+                                  letterSpacing: 0.0,
                                   fontWeight: FontWeight.bold,
                                 ),
                           ),
@@ -132,6 +138,7 @@ class _CreateJobWidgetState extends State<CreateJobWidget> {
                                     .override(
                                       fontFamily: 'Karla',
                                       color: const Color(0xFF2B2B2B),
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
                                     ),
                               ),
@@ -148,13 +155,19 @@ class _CreateJobWidgetState extends State<CreateJobWidget> {
                                 autofocus: true,
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  labelStyle:
-                                      FlutterFlowTheme.of(context).labelMedium,
+                                  isDense: false,
+                                  labelStyle: FlutterFlowTheme.of(context)
+                                      .labelMedium
+                                      .override(
+                                        fontFamily: 'Readex Pro',
+                                        letterSpacing: 0.0,
+                                      ),
                                   hintText: 'Job name',
                                   hintStyle: FlutterFlowTheme.of(context)
                                       .labelLarge
                                       .override(
                                         fontFamily: 'Karla',
+                                        letterSpacing: 0.0,
                                       ),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -194,8 +207,10 @@ class _CreateJobWidgetState extends State<CreateJobWidget> {
                                     .bodyLarge
                                     .override(
                                       fontFamily: 'Karla',
+                                      letterSpacing: 0.0,
                                     ),
                                 textAlign: TextAlign.start,
+                                minLines: null,
                                 validator: _model.textController1Validator
                                     .asValidator(context),
                               ),
@@ -213,6 +228,7 @@ class _CreateJobWidgetState extends State<CreateJobWidget> {
                                     .override(
                                       fontFamily: 'Karla',
                                       color: const Color(0xFF2B2B2B),
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
                                     ),
                               ),
@@ -229,15 +245,15 @@ class _CreateJobWidgetState extends State<CreateJobWidget> {
                                 autofocus: true,
                                 obscureText: false,
                                 decoration: InputDecoration(
-                                  labelStyle:
-                                      FlutterFlowTheme.of(context).labelMedium,
                                   hintText: 'Job description...',
                                   hintStyle: FlutterFlowTheme.of(context)
-                                      .labelMedium
+                                      .bodyMedium
                                       .override(
                                         fontFamily: 'Karla',
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
                                         fontSize: 16.0,
-                                        lineHeight: 3.0,
+                                        letterSpacing: 0.0,
                                       ),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -280,9 +296,11 @@ class _CreateJobWidgetState extends State<CreateJobWidget> {
                                     .override(
                                       fontFamily: 'Karla',
                                       fontSize: 16.0,
+                                      letterSpacing: 0.0,
                                     ),
                                 textAlign: TextAlign.start,
-                                maxLines: 3,
+                                maxLines: null,
+                                minLines: null,
                                 validator: _model.textController2Validator
                                     .asValidator(context),
                               ),
@@ -300,6 +318,7 @@ class _CreateJobWidgetState extends State<CreateJobWidget> {
                                     .override(
                                       fontFamily: 'Karla',
                                       color: const Color(0xFF2B2B2B),
+                                      letterSpacing: 0.0,
                                       fontWeight: FontWeight.w500,
                                     ),
                               ),
@@ -323,6 +342,7 @@ class _CreateJobWidgetState extends State<CreateJobWidget> {
                                       .override(
                                         fontFamily: 'Karla',
                                         fontSize: 16.0,
+                                        letterSpacing: 0.0,
                                       ),
                                   hintText: 'Number of months',
                                   hintStyle: FlutterFlowTheme.of(context)
@@ -330,6 +350,7 @@ class _CreateJobWidgetState extends State<CreateJobWidget> {
                                       .override(
                                         fontFamily: 'Karla',
                                         fontSize: 16.0,
+                                        letterSpacing: 0.0,
                                       ),
                                   enabledBorder: OutlineInputBorder(
                                     borderSide: BorderSide(
@@ -370,7 +391,9 @@ class _CreateJobWidgetState extends State<CreateJobWidget> {
                                     .override(
                                       fontFamily: 'Karla',
                                       fontSize: 16.0,
+                                      letterSpacing: 0.0,
                                     ),
+                                minLines: null,
                                 keyboardType: TextInputType.number,
                                 validator: _model.textController3Validator
                                     .asValidator(context),
@@ -395,8 +418,40 @@ class _CreateJobWidgetState extends State<CreateJobWidget> {
                         padding: const EdgeInsetsDirectional.fromSTEB(
                             35.0, 30.0, 0.0, 15.0),
                         child: FFButtonWidget(
-                          onPressed: () {
-                            print('Button pressed ...');
+                          onPressed: () async {
+                            await JobsRecord.collection
+                                .doc()
+                                .set(createJobsRecordData(
+                                  jName: _model.textController1.text,
+                                  jDescription: _model.textController2.text,
+                                  jDuration:
+                                      int.tryParse(_model.textController3.text),
+                                  jId: random_data.randomString(
+                                    1,
+                                    5,
+                                    true,
+                                    true,
+                                    true,
+                                  ),
+                                  userRef: currentUserReference,
+                                  companyRef: widget.companyInfo,
+                                  jCategory: 'Default',
+                                ));
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(
+                                  'Create Job complete',
+                                  style: TextStyle(
+                                    color: FlutterFlowTheme.of(context)
+                                        .primaryText,
+                                  ),
+                                ),
+                                duration: const Duration(milliseconds: 4000),
+                                backgroundColor:
+                                    FlutterFlowTheme.of(context).secondary,
+                              ),
+                            );
+                            context.safePop();
                           },
                           text: 'Create a job',
                           options: FFButtonOptions(
@@ -412,6 +467,7 @@ class _CreateJobWidgetState extends State<CreateJobWidget> {
                                 .override(
                                   fontFamily: 'Karla',
                                   color: FlutterFlowTheme.of(context).info,
+                                  letterSpacing: 0.0,
                                 ),
                             elevation: 3.0,
                             borderSide: const BorderSide(

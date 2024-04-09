@@ -1,8 +1,12 @@
+import 'package:job_o/flutter_flow/nav/nav.dart';
+
 import '../services/firebase_auth/auth_util.dart';
 import '../services/backend.dart';
 import '../util/theme/flutter_flow_theme.dart';
 import '../util/flutter_flow_util.dart';
 import 'flutter_flow_widgets.dart';
+import '../models/flutter_flow_model.dart';
+import '../util/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import '../models/home_page_model.dart';
 export '../models/home_page_model.dart';
@@ -44,36 +48,42 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         appBar: AppBar(
           backgroundColor: const Color(0xFF03764D),
           automaticallyImplyLeading: false,
-          title: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              AuthUserStreamWidget(
-                builder: (context) => Text(
-                  currentUserDisplayName,
-                  style: FlutterFlowTheme.of(context).headlineMedium.override(
+          title: Align(
+            alignment: const AlignmentDirectional(-1.0, -1.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                AuthUserStreamWidget(
+                  builder: (context) => Text(
+                    currentUserDisplayName.maybeHandleOverflow(maxChars: 16),
+                    style: FlutterFlowTheme.of(context).headlineMedium.override(
+                          fontFamily: 'Karla',
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          fontSize: 22.0,
+                          letterSpacing: 0.0,
+                          fontWeight: FontWeight.w500,
+                        ),
+                  ),
+                ),
+                Text(
+                  'Let\'s find your job',
+                  style: FlutterFlowTheme.of(context).labelSmall.override(
                         fontFamily: 'Karla',
                         color: FlutterFlowTheme.of(context).secondaryBackground,
-                        fontSize: 22.0,
-                        fontWeight: FontWeight.w500,
+                        fontSize: 16.0,
+                        letterSpacing: 0.0,
+                        fontWeight: FontWeight.w300,
                       ),
                 ),
-              ),
-              Text(
-                'Let\'s find your job',
-                style: FlutterFlowTheme.of(context).labelSmall.override(
-                      fontFamily: 'Karla',
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                      fontSize: 16.0,
-                      fontWeight: FontWeight.w300,
-                    ),
-              ),
-            ].divide(const SizedBox(height: 4.0)),
+              ].divide(const SizedBox(height: 4.0)),
+            ),
           ),
           actions: [
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 20.0, 20.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 20.0, 10.0),
               child: AuthUserStreamWidget(
                 builder: (context) => InkWell(
                   splashColor: Colors.transparent,
@@ -83,12 +93,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   onTap: () async {
                     context.pushNamed('ProfilePage');
                   },
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.only(
-                      bottomLeft: Radius.circular(360.0),
-                      bottomRight: Radius.circular(360.0),
-                      topLeft: Radius.circular(360.0),
-                      topRight: Radius.circular(360.0),
+                  child: Container(
+                    clipBehavior: Clip.antiAlias,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
                     ),
                     child: Image.network(
                       currentUserPhoto,
@@ -116,6 +124,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         fontFamily: 'Karla',
                         color: FlutterFlowTheme.of(context).primaryText,
                         fontSize: 28.0,
+                        letterSpacing: 0.0,
                         fontWeight: FontWeight.w600,
                       ),
                 ),
@@ -209,6 +218,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               listViewJobsRecord.reference,
                                               ParamType.DocumentReference,
                                             ),
+                                            'companyinfo': serializeParam(
+                                              columnCompanyProfileRecord
+                                                  .reference,
+                                              ParamType.DocumentReference,
+                                            ),
                                           }.withoutNulls,
                                         );
                                       },
@@ -222,8 +236,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                               borderRadius:
                                                   BorderRadius.circular(4.0),
                                               child: Image.network(
-                                                columnCompanyProfileRecord
-                                                    .logoUrl,
+                                                columnCompanyProfileRecord.logo,
                                                 width: 300.0,
                                                 height: 100.0,
                                                 fit: BoxFit.cover,
@@ -236,14 +249,18 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 MainAxisAlignment.spaceBetween,
                                             children: [
                                               Text(
-                                                columnCompanyProfileRecord
-                                                    .cName,
+                                                columnCompanyProfileRecord.cName
+                                                    .maybeHandleOverflow(
+                                                  maxChars: 12,
+                                                  replacement: '…',
+                                                ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
                                                         .labelSmall
                                                         .override(
                                                           fontFamily: 'Karla',
                                                           fontSize: 14.0,
+                                                          letterSpacing: 0.0,
                                                           fontWeight:
                                                               FontWeight.w500,
                                                         ),
@@ -252,8 +269,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                 onPressed: () {
                                                   print('Button pressed ...');
                                                 },
-                                                text: listViewJobsRecord.jRating
-                                                    .toString(),
+                                                text: valueOrDefault<String>(
+                                                  functions.averageRating(
+                                                      columnCompanyProfileRecord
+                                                          .ratings
+                                                          .toList()),
+                                                  '0',
+                                                ),
                                                 icon: Icon(
                                                   Icons.star,
                                                   color: FlutterFlowTheme.of(
@@ -281,6 +303,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                                 'Readex Pro',
                                                             color: Colors.white,
                                                             fontSize: 8.0,
+                                                            letterSpacing: 0.0,
                                                           ),
                                                   elevation: 3.0,
                                                   borderSide: const BorderSide(
@@ -304,13 +327,18 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   CrossAxisAlignment.start,
                                               children: [
                                                 Text(
-                                                  listViewJobsRecord.jName,
+                                                  listViewJobsRecord.jName
+                                                      .maybeHandleOverflow(
+                                                    maxChars: 12,
+                                                    replacement: '…',
+                                                  ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyLarge
                                                       .override(
                                                         fontFamily: 'Karla',
-                                                        fontSize: 18.0,
+                                                        fontSize: 16.0,
+                                                        letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.w600,
                                                       ),
@@ -339,6 +367,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   style: FlutterFlowTheme.of(context).bodyLarge.override(
                         fontFamily: 'Karla',
                         fontSize: 28.0,
+                        letterSpacing: 0.0,
                         fontWeight: FontWeight.w600,
                       ),
                 ),
@@ -413,112 +442,159 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 }
                                 final columnCompanyProfileRecord =
                                     snapshot.data!;
-                                return Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: const BorderRadius.only(
-                                        bottomLeft: Radius.circular(0.0),
-                                        bottomRight: Radius.circular(0.0),
-                                        topLeft: Radius.circular(8.0),
-                                        topRight: Radius.circular(8.0),
+                                return InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.pushNamed(
+                                      'JobPage',
+                                      queryParameters: {
+                                        'companyinfo': serializeParam(
+                                          columnCompanyProfileRecord.reference,
+                                          ParamType.DocumentReference,
+                                        ),
+                                        'jobinfo': serializeParam(
+                                          listViewJobsRecord.reference,
+                                          ParamType.DocumentReference,
+                                        ),
+                                      }.withoutNulls,
+                                    );
+                                  },
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      ClipRRect(
+                                        borderRadius: const BorderRadius.only(
+                                          bottomLeft: Radius.circular(0.0),
+                                          bottomRight: Radius.circular(0.0),
+                                          topLeft: Radius.circular(8.0),
+                                          topRight: Radius.circular(8.0),
+                                        ),
+                                        child: Image.network(
+                                          columnCompanyProfileRecord.cPhoto,
+                                          width: double.infinity,
+                                          height: 200.0,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
-                                      child: Image.network(
-                                        'https://images.unsplash.com/photo-1588286840104-8957b019727f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w0NTYyMDF8MHwxfHNlYXJjaHw0fHx5b2dhfGVufDB8fHx8MTcwODAxMDkwOHww&ixlib=rb-4.0.3&q=80&w=1080',
-                                        width: double.infinity,
-                                        height: 200.0,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                    Padding(
-                                      padding: const EdgeInsets.all(12.0),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              Text(
-                                                columnCompanyProfileRecord
-                                                    .cName,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelSmall
-                                                        .override(
-                                                          fontFamily: 'Karla',
-                                                          fontSize: 14.0,
-                                                        ),
-                                              ),
-                                              FFButtonWidget(
-                                                onPressed: () {
-                                                  print('Button pressed ...');
-                                                },
-                                                text: '4.5',
-                                                icon: Icon(
-                                                  Icons.star,
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .warning,
-                                                  size: 12.0,
-                                                ),
-                                                options: FFButtonOptions(
-                                                  width: 50.0,
-                                                  height: 20.0,
-                                                  padding: const EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          0.0, 0.0, 0.0, 0.0),
-                                                  iconPadding:
-                                                      const EdgeInsetsDirectional
-                                                          .fromSTEB(0.0, 0.0,
-                                                              0.0, 0.0),
-                                                  color: const Color(0xFF03764D),
-                                                  textStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .titleSmall
-                                                          .override(
-                                                            fontFamily:
-                                                                'Readex Pro',
-                                                            color: Colors.white,
-                                                            fontSize: 8.0,
-                                                          ),
-                                                  elevation: 3.0,
-                                                  borderSide: const BorderSide(
-                                                    color: Colors.transparent,
-                                                    width: 1.0,
+                                      Padding(
+                                        padding: const EdgeInsets.all(12.0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              children: [
+                                                Text(
+                                                  columnCompanyProfileRecord
+                                                      .cName
+                                                      .maybeHandleOverflow(
+                                                    maxChars: 14,
+                                                    replacement: '…',
                                                   ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          22.0),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .labelSmall
+                                                      .override(
+                                                        fontFamily: 'Karla',
+                                                        fontSize: 16.0,
+                                                        letterSpacing: 0.0,
+                                                      ),
                                                 ),
+                                                FFButtonWidget(
+                                                  onPressed: () {
+                                                    print('Button pressed ...');
+                                                  },
+                                                  text: valueOrDefault<String>(
+                                                    functions.averageRating(
+                                                        columnCompanyProfileRecord
+                                                            .ratings
+                                                            .toList()),
+                                                    '0',
+                                                  ),
+                                                  icon: Icon(
+                                                    Icons.star,
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .warning,
+                                                    size: 12.0,
+                                                  ),
+                                                  options: FFButtonOptions(
+                                                    width: 50.0,
+                                                    height: 20.0,
+                                                    padding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    iconPadding:
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: const Color(0xFF03764D),
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Readex Pro',
+                                                          color: Colors.white,
+                                                          fontSize: 8.0,
+                                                          letterSpacing: 0.0,
+                                                        ),
+                                                    elevation: 3.0,
+                                                    borderSide: const BorderSide(
+                                                      color: Colors.transparent,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            22.0),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                            Text(
+                                              listViewJobsRecord.jName
+                                                  .maybeHandleOverflow(
+                                                maxChars: 16,
+                                                replacement: '…',
                                               ),
-                                            ],
-                                          ),
-                                          Text(
-                                            listViewJobsRecord.jName,
-                                            style: FlutterFlowTheme.of(context)
-                                                .titleLarge
-                                                .override(
-                                                  fontFamily: 'Karla',
-                                                ),
-                                          ),
-                                          Text(
-                                            listViewJobsRecord.jDescription,
-                                            style: FlutterFlowTheme.of(context)
-                                                .labelSmall
-                                                .override(
-                                                  fontFamily: 'Karla',
-                                                ),
-                                          ),
-                                        ].divide(const SizedBox(height: 4.0)),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleLarge
+                                                      .override(
+                                                        fontFamily: 'Karla',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                            ),
+                                            Text(
+                                              listViewJobsRecord.jDescription
+                                                  .maybeHandleOverflow(
+                                                maxChars: 30,
+                                                replacement: '…',
+                                              ),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelSmall
+                                                      .override(
+                                                        fontFamily: 'Karla',
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                            ),
+                                          ].divide(const SizedBox(height: 4.0)),
+                                        ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 );
                               },
                             ),

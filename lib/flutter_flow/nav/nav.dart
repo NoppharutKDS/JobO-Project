@@ -106,13 +106,24 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           path: '/updateJob',
           builder: (context, params) => UpdateJobWidget(
             jobRef: params.getParam(
-                'jobRef', ParamType.DocumentReference, false, ['jobs']),
+              'jobRef',
+              ParamType.DocumentReference,
+              false,
+              ['jobs'],
+            ),
           ),
         ),
         FFRoute(
           name: 'CreateJob',
           path: '/createJob',
-          builder: (context, params) => const CreateJobWidget(),
+          builder: (context, params) => CreateJobWidget(
+            companyInfo: params.getParam(
+              'companyInfo',
+              ParamType.DocumentReference,
+              false,
+              ['companyProfile'],
+            ),
+          ),
         ),
         FFRoute(
           name: 'PhoneVer',
@@ -127,20 +138,50 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'JobManagePage',
           path: '/jobManagePage',
-          builder: (context, params) => const JobManagePageWidget(),
+          builder: (context, params) => JobManagePageWidget(
+            companyInfo: params.getParam(
+              'companyInfo',
+              ParamType.DocumentReference,
+              false,
+              ['companyProfile'],
+            ),
+          ),
         ),
         FFRoute(
           name: 'JobPage',
           path: '/jobPage',
           builder: (context, params) => JobPageWidget(
             jobinfo: params.getParam(
-                'jobinfo', ParamType.DocumentReference, false, ['jobs']),
+              'jobinfo',
+              ParamType.DocumentReference,
+              false,
+              ['jobs'],
+            ),
+            companyinfo: params.getParam(
+              'companyinfo',
+              ParamType.DocumentReference,
+              false,
+              ['companyProfile'],
+            ),
           ),
         ),
         FFRoute(
           name: 'CompanyPage',
           path: '/companyPage',
-          builder: (context, params) => const CompanyPageWidget(),
+          builder: (context, params) => CompanyPageWidget(
+            companyInfo: params.getParam(
+              'companyInfo',
+              ParamType.DocumentReference,
+              false,
+              ['companyProfile'],
+            ),
+            jobInfo: params.getParam(
+              'jobInfo',
+              ParamType.DocumentReference,
+              false,
+              ['jobs'],
+            ),
+          ),
         ),
         FFRoute(
           name: 'TipPage',
@@ -167,6 +208,60 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => params.isEmpty
               ? const NavBarPage(initialPage: 'FavPage')
               : const FavPageWidget(),
+        ),
+        FFRoute(
+          name: 'SettingPage',
+          path: '/settingPage',
+          builder: (context, params) => params.isEmpty
+              ? const NavBarPage(initialPage: 'SettingPage')
+              : const SettingPageWidget(),
+        ),
+        FFRoute(
+          name: 'CompanyAdminPage',
+          path: '/companyAdminPage',
+          builder: (context, params) => CompanyAdminPageWidget(
+            userInfo: params.getParam(
+              'userInfo',
+              ParamType.DocumentReference,
+              false,
+              ['users'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'EditProfilePage',
+          path: '/editProfilePage',
+          builder: (context, params) => EditProfilePageWidget(
+            userInfomation: params.getParam(
+              'userInfomation',
+              ParamType.DocumentReference,
+              false,
+              ['users'],
+            ),
+          ),
+        ),
+        FFRoute(
+          name: 'ForgotPass',
+          path: '/forgotPass',
+          builder: (context, params) => const ForgotPassWidget(),
+        ),
+        FFRoute(
+          name: 'ReviewPage',
+          path: '/reviewPage',
+          builder: (context, params) => ReviewPageWidget(
+            jobinfo: params.getParam(
+              'jobinfo',
+              ParamType.DocumentReference,
+              false,
+              ['jobs'],
+            ),
+            companyinfo: params.getParam(
+              'companyinfo',
+              ParamType.DocumentReference,
+              false,
+              ['companyProfile'],
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
@@ -243,7 +338,7 @@ extension _GoRouterStateExtensions on GoRouterState {
       extra != null ? extra as Map<String, dynamic> : {};
   Map<String, dynamic> get allParams => <String, dynamic>{}
     ..addAll(pathParameters)
-    ..addAll(queryParameters)
+    ..addAll(uri.queryParameters)
     ..addAll(extraMap);
   TransitionInfo get transitionInfo => extraMap.containsKey(kTransitionInfoKey)
       ? extraMap[kTransitionInfoKey] as TransitionInfo
@@ -299,8 +394,12 @@ class FFParameters {
       return param;
     }
     // Return serialized value.
-    return deserializeParam<T>(param, type, isList,
-        collectionNamePath: collectionNamePath);
+    return deserializeParam<T>(
+      param,
+      type,
+      isList,
+      collectionNamePath: collectionNamePath,
+    );
   }
 }
 
@@ -332,7 +431,7 @@ class FFRoute {
           }
 
           if (requireAuth && !appStateNotifier.loggedIn) {
-            appStateNotifier.setRedirectLocationIfUnset(state.location);
+            appStateNotifier.setRedirectLocationIfUnset(state.uri.toString());
             return '/loginPage';
           }
           return null;
@@ -411,7 +510,7 @@ class RootPageContext {
   static bool isInactiveRootPage(BuildContext context) {
     final rootPageContext = context.read<RootPageContext?>();
     final isRootPage = rootPageContext?.isRootPage ?? false;
-    final location = GoRouter.of(context).location;
+    final location = GoRouter.of(context).routerDelegate.currentConfiguration.uri.toString();
     return isRootPage &&
         location != '/' &&
         location != rootPageContext?.errorRoute;

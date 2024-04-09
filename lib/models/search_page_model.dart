@@ -1,6 +1,8 @@
+import '../services/backend.dart';
 import '../util/flutter_flow_util.dart';
 import '../ui/search_page_widget.dart' show SearchPageWidget;
 import 'package:flutter/material.dart';
+import 'flutter_flow_model.dart';
 
 class SearchPageModel extends FlutterFlowModel<SearchPageWidget> {
   ///  State fields for stateful widgets in this page.
@@ -10,8 +12,7 @@ class SearchPageModel extends FlutterFlowModel<SearchPageWidget> {
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
-
-  /// Initialization and disposal methods.
+  List<JobsRecord> simpleSearchResults = [];
 
   @override
   void initState(BuildContext context) {}
@@ -22,8 +23,4 @@ class SearchPageModel extends FlutterFlowModel<SearchPageWidget> {
     textFieldFocusNode?.dispose();
     textController?.dispose();
   }
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

@@ -1,12 +1,13 @@
-import '../services/firebase_auth/auth_util.dart';
+import 'package:job_o/flutter_flow/nav/nav.dart';
+
+import '../services/api_requests/api_calls.dart';
 import '../services/backend.dart';
+import '../services/firebase_auth/auth_util.dart';
 import '../util/theme/flutter_flow_theme.dart';
 import '../util/flutter_flow_util.dart';
 import 'flutter_flow_widgets.dart';
+import '../models/flutter_flow_model.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import '../models/phone_ver_model.dart';
 export '../models/phone_ver_model.dart';
 
@@ -42,15 +43,6 @@ class _PhoneVerWidgetState extends State<PhoneVerWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -61,22 +53,22 @@ class _PhoneVerWidgetState extends State<PhoneVerWidget> {
         body: SafeArea(
           top: true,
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+            padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: const AlignmentDirectional(0.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(-1.0, 0.0),
+                        alignment: const AlignmentDirectional(-1.0, 0.0),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               15.0, 0.0, 40.0, 0.0),
                           child: InkWell(
                             splashColor: Colors.transparent,
@@ -95,7 +87,7 @@ class _PhoneVerWidgetState extends State<PhoneVerWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: const AlignmentDirectional(0.0, 0.0),
                         child: Text(
                           'Phone Verification',
                           textAlign: TextAlign.start,
@@ -103,6 +95,7 @@ class _PhoneVerWidgetState extends State<PhoneVerWidget> {
                               FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'Karla',
                                     fontSize: 24.0,
+                                    letterSpacing: 0.0,
                                     fontWeight: FontWeight.bold,
                                   ),
                         ),
@@ -111,7 +104,7 @@ class _PhoneVerWidgetState extends State<PhoneVerWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 100.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 100.0, 0.0, 0.0),
                   child: StreamBuilder<List<UsersRecord>>(
                     stream: queryUsersRecord(
                       singleRecord: true,
@@ -154,30 +147,32 @@ class _PhoneVerWidgetState extends State<PhoneVerWidget> {
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                   child: Text(
-                    'Please enter your valid phone number. \nWe will send you a 4-digit code \nto verify your account.',
+                    'Please enter your valid phone number. \nWe will send you a 6-digit code \nto verify your account.',
                     textAlign: TextAlign.center,
                     style: FlutterFlowTheme.of(context).bodyLarge.override(
                           fontFamily: 'Karla',
+                          letterSpacing: 0.0,
                         ),
                   ),
                 ),
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                   child: Form(
                     key: _model.formKey,
                     autovalidateMode: AutovalidateMode.disabled,
                     child: Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             20.0, 0.0, 20.0, 0.0),
-                        child: Container(
+                        child: SizedBox(
                           width: 320.0,
                           child: TextFormField(
                             controller: _model.textController,
                             focusNode: _model.textFieldFocusNode,
+                            autofocus: false,
                             textInputAction: TextInputAction.send,
                             obscureText: false,
                             decoration: InputDecoration(
@@ -187,12 +182,14 @@ class _PhoneVerWidgetState extends State<PhoneVerWidget> {
                                     fontFamily: 'Karla',
                                     color: FlutterFlowTheme.of(context)
                                         .primaryText,
+                                    letterSpacing: 0.0,
                                   ),
                               hintText: 'Enter your Phone Number...',
                               hintStyle: FlutterFlowTheme.of(context)
                                   .labelLarge
                                   .override(
                                     fontFamily: 'Karla',
+                                    letterSpacing: 0.0,
                                   ),
                               enabledBorder: OutlineInputBorder(
                                 borderSide: BorderSide(
@@ -223,13 +220,15 @@ class _PhoneVerWidgetState extends State<PhoneVerWidget> {
                                 borderRadius: BorderRadius.circular(24.0),
                               ),
                               filled: true,
-                              fillColor: Color(0xFFF9FAFB),
-                              contentPadding: EdgeInsets.all(12.0),
+                              fillColor: const Color(0xFFF9FAFB),
+                              contentPadding: const EdgeInsets.all(12.0),
                             ),
                             style:
                                 FlutterFlowTheme.of(context).bodyLarge.override(
                                       fontFamily: 'Karla',
+                                      letterSpacing: 0.0,
                                     ),
+                            minLines: null,
                             keyboardType: TextInputType.phone,
                             validator: _model.textControllerValidator
                                 .asValidator(context),
@@ -240,18 +239,21 @@ class _PhoneVerWidgetState extends State<PhoneVerWidget> {
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.0, 0.0),
+                  alignment: const AlignmentDirectional(0.0, 0.0),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 35.0, 0.0, 15.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 35.0, 0.0, 15.0),
                     child: FFButtonWidget(
                       onPressed: () async {
+                        if (_model.formKey.currentState == null ||
+                            !_model.formKey.currentState!.validate()) {
+                          return;
+                        }
                         final phoneNumberVal = _model.textController.text;
-                        if (phoneNumberVal == null ||
-                            phoneNumberVal.isEmpty ||
+                        if (phoneNumberVal.isEmpty ||
                             !phoneNumberVal.startsWith('+')) {
                           ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
+                            const SnackBar(
                               content: Text(
                                   'Phone Number is required and has to start with +.'),
                             ),
@@ -274,18 +276,19 @@ class _PhoneVerWidgetState extends State<PhoneVerWidget> {
                       options: FFButtonOptions(
                         width: 320.0,
                         height: 50.0,
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             24.0, 0.0, 24.0, 0.0),
                         iconPadding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-                        color: Color(0xFF03764D),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: const Color(0xFF03764D),
                         textStyle:
                             FlutterFlowTheme.of(context).titleLarge.override(
                                   fontFamily: 'Karla',
                                   color: FlutterFlowTheme.of(context).info,
+                                  letterSpacing: 0.0,
                                 ),
                         elevation: 3.0,
-                        borderSide: BorderSide(
+                        borderSide: const BorderSide(
                           color: Colors.transparent,
                           width: 1.0,
                         ),

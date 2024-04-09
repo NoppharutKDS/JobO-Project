@@ -1,6 +1,7 @@
 import '../util/flutter_flow_util.dart';
 import '../ui/tip_page_widget.dart' show TipPageWidget;
 import 'package:flutter/material.dart';
+import 'flutter_flow_model.dart';
 
 class TipPageModel extends FlutterFlowModel<TipPageWidget> {
   ///  State fields for stateful widgets in this page.
@@ -14,15 +15,9 @@ class TipPageModel extends FlutterFlowModel<TipPageWidget> {
       ? pageViewController!.page!.round()
       : 0;
 
-  /// Initialization and disposal methods.
-
   @override
   void initState(BuildContext context) {}
 
   @override
   void dispose() {}
-
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

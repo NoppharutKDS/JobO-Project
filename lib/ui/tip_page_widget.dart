@@ -1,6 +1,9 @@
+import 'package:job_o/flutter_flow/nav/nav.dart';
+
 import '../util/theme/flutter_flow_theme.dart';
 import '../util/flutter_flow_util.dart';
 import 'flutter_flow_widgets.dart';
+import '../models/flutter_flow_model.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart'
     as smooth_page_indicator;
 import 'package:flutter/material.dart';
@@ -92,6 +95,7 @@ class _TipPageWidgetState extends State<TipPageWidget> {
                                           .titleLarge
                                           .override(
                                             fontFamily: 'Karla',
+                                            letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
                                           ),
                                     ),
@@ -122,6 +126,7 @@ class _TipPageWidgetState extends State<TipPageWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .secondaryText,
+                                                        letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
@@ -163,6 +168,7 @@ class _TipPageWidgetState extends State<TipPageWidget> {
                                           .titleLarge
                                           .override(
                                             fontFamily: 'Karla',
+                                            letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
                                           ),
                                     ),
@@ -202,6 +208,7 @@ class _TipPageWidgetState extends State<TipPageWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .secondaryText,
+                                                        letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
@@ -243,6 +250,7 @@ class _TipPageWidgetState extends State<TipPageWidget> {
                                           .titleLarge
                                           .override(
                                             fontFamily: 'Karla',
+                                            letterSpacing: 0.0,
                                             fontWeight: FontWeight.bold,
                                           ),
                                     ),
@@ -282,6 +290,7 @@ class _TipPageWidgetState extends State<TipPageWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .secondaryText,
+                                                        letterSpacing: 0.0,
                                                         fontWeight:
                                                             FontWeight.normal,
                                                       ),
@@ -297,8 +306,8 @@ class _TipPageWidgetState extends State<TipPageWidget> {
                                       padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 30.0, 0.0, 0.0),
                                       child: FFButtonWidget(
-                                        onPressed: () {
-                                          print('Button pressed ...');
+                                        onPressed: () async {
+                                          context.goNamed('HomePage');
                                         },
                                         text: 'Let\'s Start !',
                                         options: FFButtonOptions(
@@ -319,6 +328,7 @@ class _TipPageWidgetState extends State<TipPageWidget> {
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .info,
+                                                letterSpacing: 0.0,
                                               ),
                                           elevation: 3.0,
                                           borderSide: const BorderSide(
