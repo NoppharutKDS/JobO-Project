@@ -28,3 +28,36 @@ Many students who are currently studying Computer Engineering or Software Knowle
 
 • Profile Customization – Allows job seekers to customize their profile to indicate their  education, experience, and accomplishments.
 ## Requirement before starting JobO
+
+| Name | Required version(s) |
+|------|---------------------|
+| Flutter SDK | 3.19.0 or Higher |
+| Flutter Docotor | All requirements must be checked |
+
+### Getting Start
+
+1. Clone the respository to your machine.
+
+    ```
+   git clone https://github.com/NoppharutKDS/JobO-project.git
+    ```
+2. Change directory to the local repository by typing this command.
+
+    ```
+   cd JobO-project
+    ```
+3. Install all require dependencies.
+
+    ```
+   flutter pub get
+    ```
+4. Choose platform you want to run.
+    ```
+   - iOS
+   - Android
+   - Web
+    ```
+5. Running the application by this command.
+    ```
+   flutter run
+    ```
